@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+    <a href="/" style="text-align: center">转到搜索页</a>
+  <ul class="article-list">
+
+    {% for item in data %}
+    <li>
+      <h2>标题: {{ item.title }}</h2>
+      <p>作者: {{ item.author|join(', ') }}</p>
+      <p>{{ item.content }}</p>
+    </li>
+    {% endfor %}
+  </ul>
+  {% if page > 1 %}
+  <a href="{{ url_for('show_data', page=page - 1) }}" class="prev-page">上一页</a>
+  {% endif %}
+  {% if data_length == per_page %}
+  <a href="{{ url_for('show_data', page=page + 1) }}" class="next-page">下一页</a>
+  {% endif %}
+    <form action="/analyze" style="text-align: center">
+        <h1>
+            <input type="submit" value="分析文献">
+        </h1>
+    </form>
+    <img id="myImage" src="/analyze" alt="生成的图像">
+    <button onclick="refreshImage()">刷新图像</button>
+    <script>
+        function refreshImage() {
+            const imgElement = document.getElementById('myImage');
+            imgElement.src = imgElement.src + '?timestamp=' + new Date().getTime();
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>知网文献分析网站</title>
+  <meta name="description" content="一个用于知网文献分析的网站。">
+  <meta name="keywords" content="知网,文献分析">
+</head>
+
+<body>
+  <h1 style="text-align: center;color: black;">知网文献分析网站</h1>
+  <form action="/method" method="post" title="文献搜索表单" style="text-align: center">
+      <label>主题:</label><br>
+    <input type="text" name="theme"><br>
+    <label>标题:</label><br>
+    <input type="text" name="title"><br>
+    <label>作者筛选:</label><br>
+    <input type="text" name="author"><br>
+    <label>关键字:</label><br>
+    <input type="text" name="keyword"><br>
+    <label>页数:</label><br>
+    <input type="number" name="page"><br>
+    <input type="submit" value="查看文献" onclick="handleClick()">
+  </form>
+
+    <li style="text-align: center">
+        先点查看文献才能分析
+    </li>
+  <script>
+      function handleClick(){
+          alert("分析中,页数越多时间越长,请等待")
+      }
+  </script>
+</body>
+
+</html>
